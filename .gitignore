@@ -35,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+job-scanner-gcp-key.json
