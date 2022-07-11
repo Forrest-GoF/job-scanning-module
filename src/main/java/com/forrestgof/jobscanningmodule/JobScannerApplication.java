@@ -1,4 +1,4 @@
-package com.forrestGoF.JobScanningModule;
+package com.forrestgof.jobscanningmodule;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

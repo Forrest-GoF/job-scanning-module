@@ -1,5 +1,6 @@
-package com.forrestGoF.JobScanningModule.GCP;
+package com.forrestgof.jobscanningmodule.cts;
 
+import com.forrestgof.jobscanningmodule.cts.library.JobSearchListCompanies;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

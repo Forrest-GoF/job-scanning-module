@@ -1,4 +1,4 @@
-package com.forrestGoF.JobScanningModule;
+package com.forrestgof.jobscanningmodule;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

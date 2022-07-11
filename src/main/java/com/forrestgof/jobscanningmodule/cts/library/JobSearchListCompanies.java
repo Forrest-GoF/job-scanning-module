@@ -1,4 +1,4 @@
-package com.forrestGoF.JobScanningModule.GCP;
+package com.forrestgof.jobscanningmodule.cts.library;
 
 import com.google.cloud.talent.v4.Company;
 import com.google.cloud.talent.v4.CompanyServiceClient;
