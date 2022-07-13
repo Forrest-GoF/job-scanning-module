@@ -38,6 +38,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -48,6 +49,9 @@ dependencies {
 
     //CTS Client Library
     implementation 'com.google.cloud:google-cloud-talent:2.3.0'
+
+    //SerpAPI google-search-results-java
+    implementation 'com.github.serpapi:google-search-results-java:2.0.2'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
