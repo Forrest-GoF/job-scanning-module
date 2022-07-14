@@ -17,6 +17,7 @@ public class SalaryService {
 
 	private final SalaryRepository salaryRepository;
 
+	@Transactional
 	public Long save(Salary salary) {
 		salaryRepository.save(salary);
 		return salary.getId();
