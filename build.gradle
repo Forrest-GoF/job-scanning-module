@@ -47,7 +47,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     //CTS Client Library
-    implementation 'com.google.cloud:google-cloud-talent:2.3.0'
+//    implementation 'com.google.cloud:google-cloud-talent:2.3.0'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
