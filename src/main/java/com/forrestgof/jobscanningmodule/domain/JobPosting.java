@@ -2,6 +2,7 @@ package com.forrestgof.jobscanningmodule.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -58,7 +59,7 @@ public class JobPosting {
 	@Column(name = "job_description")
 	private String description;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "salary_id")
 	private Salary salary;
 

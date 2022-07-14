@@ -61,7 +61,6 @@ public class IntegratedJobPostingTest {
 		//when
 		companyService.save(company);
 		locationService.save(location);
-		salaryService.save(salary);
 		String jobPostingId = jobPostingService.save(jobPosting);
 
 		//then
