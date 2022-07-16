@@ -35,7 +35,7 @@ public class JobPostingService {
 		return jobPostingRepository.findByKey(key);
 	}
 
-	public boolean existByKey(String key) {
+	public boolean existsByKey(String key) {
 		return jobPostingRepository.existsByKey(key);
 	}
 }
