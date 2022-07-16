@@ -1,6 +1,5 @@
-package com.forrestgof.jobscanningmodule.Service;
+package com.forrestgof.jobscanningmodule.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.forrestgof.jobscanningmodule.Repository.CompanyRepository;
 import com.forrestgof.jobscanningmodule.domain.Company;
+import com.forrestgof.jobscanningmodule.repository.CompanyRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -30,6 +29,6 @@ class CompanyServiceTest {
 		Long id = companyService.save(company);
 
 		//then
-		Assertions.assertThat(company).isEqualTo(companyRepository.findOne(id));
+		org.assertj.core.api.Assertions.assertThat(company).isEqualTo(companyRepository.findById(id).get());
 	}
 }

@@ -1,4 +1,4 @@
-package com.forrestgof.jobscanningmodule.Service;
+package com.forrestgof.jobscanningmodule.service;
 
 import java.time.LocalDateTime;
 
@@ -10,12 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.forrestgof.jobscanningmodule.Repository.JobPostingRepository;
 import com.forrestgof.jobscanningmodule.domain.Company;
 import com.forrestgof.jobscanningmodule.domain.JobPosting;
 import com.forrestgof.jobscanningmodule.domain.JobType;
 import com.forrestgof.jobscanningmodule.domain.Location;
 import com.forrestgof.jobscanningmodule.domain.Salary;
+import com.forrestgof.jobscanningmodule.repository.JobPostingRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -23,47 +23,43 @@ import com.forrestgof.jobscanningmodule.domain.Salary;
 public class IntegratedJobPostingTest {
 
 	@Autowired
+	JobPostingService jobPostingService;
+	@Autowired
 	CompanyService companyService;
 	@Autowired
 	LocationService locationService;
 	@Autowired
-	SalaryService salaryService;
-	@Autowired
-	JobPostingService jobPostingService;
-	@Autowired
 	JobPostingRepository jobPostingRepository;
 
 	@Test
-	public void 통합_공고저장() throws Exception {
+	public void 통합공고저장() throws Exception {
 		//given
 		Company company = Company.of("Naver", "www.naver.com");
 		Location location = Location.from("경기도 용인시");
 		Salary salary = Salary.builder()
-			.to(1000000)
-			.from(3000000)
-			.currency('₩')
+			.from(10000)
+			.to(20000)
+			.currency('$')
 			.periodicity("월")
 			.build();
-
 		JobPosting jobPosting = JobPosting.builder()
-			.id("123")
+			.key("12345")
+			.title("네이버 갈사람~")
 			.company(company)
 			.location(location)
-			.title("네이버 갈사람~")
 			.platform("잡코리아")
 			.postedAt(LocalDateTime.now())
 			.jobType(JobType.FULLTIME)
+			.salary(salary)
 			.applyingUrl("www.naver.com")
 			.description("테스트 입니다.")
-			.salary(salary)
 			.build();
 
 		//when
-		companyService.save(company);
-		locationService.save(location);
-		String jobPostingId = jobPostingService.save(jobPosting);
+		Long jobPostingId = jobPostingService.save(jobPosting);
 
 		//then
-		Assertions.assertThat(jobPosting).isEqualTo(jobPostingRepository.findOne(jobPostingId));
+		Assertions.assertThat(jobPosting).isEqualTo(jobPostingRepository.findById(jobPostingId).get());
 	}
+
 }
