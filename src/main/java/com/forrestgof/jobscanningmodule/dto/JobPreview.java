@@ -2,19 +2,18 @@ package com.forrestgof.jobscanningmodule.dto;
 
 import java.time.LocalDateTime;
 
+import com.forrestgof.jobscanningmodule.domain.Salary;
+
 import lombok.Data;
 
 @Data
-public class JobPostingDto {
-	private String id;
+public class JobPreview {
+	private String key;
 	private String title;
-	private String company;
-	private String thumbnail;
-	private String location;
+	private CompanyDto company;
+	private LocationDto location;
 	private String platform;
 	private LocalDateTime postedAt;
-	private String salary;
+	private Salary salary;
 	private String type;
-	private String applyUrl;
-	private String description;
 }
