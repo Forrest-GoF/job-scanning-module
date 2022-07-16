@@ -1,6 +1,5 @@
-package com.forrestgof.jobscanningmodule.Service;
+package com.forrestgof.jobscanningmodule.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.forrestgof.jobscanningmodule.Repository.LocationRepository;
 import com.forrestgof.jobscanningmodule.domain.Location;
+import com.forrestgof.jobscanningmodule.repository.LocationRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -17,9 +16,9 @@ import com.forrestgof.jobscanningmodule.domain.Location;
 class LocationServiceTest {
 
 	@Autowired
-	LocationRepository locationRepository;
-	@Autowired
 	LocationService locationService;
+	@Autowired
+	LocationRepository locationRepository;
 
 	@Test
 	public void 지역저장() throws Exception {
@@ -30,6 +29,6 @@ class LocationServiceTest {
 		Long id = locationService.save(location);
 
 		//then
-		Assertions.assertThat(location).isEqualTo(locationRepository.findOne(id));
+		org.assertj.core.api.Assertions.assertThat(location).isEqualTo(locationRepository.findById(id).get());
 	}
 }

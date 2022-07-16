@@ -1,12 +1,12 @@
-package com.forrestgof.jobscanningmodule.Service;
+package com.forrestgof.jobscanningmodule.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.forrestgof.jobscanningmodule.Repository.LocationRepository;
 import com.forrestgof.jobscanningmodule.domain.Location;
+import com.forrestgof.jobscanningmodule.repository.LocationRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +24,7 @@ public class LocationService {
 	}
 
 	public Location findOne(Long id) {
-		return locationRepository.findOne(id);
+		return locationRepository.findById(id).orElseThrow();
 	}
 
 	public List<Location> findAll() {
