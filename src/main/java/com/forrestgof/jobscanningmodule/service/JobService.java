@@ -31,7 +31,7 @@ public class JobService {
 	}
 
 	public JobDetail detail(String key) {
-		if (jobPostingService.existByKey(key)) {
+		if (jobPostingService.existsByKey(key)) {
 			JobPosting byKey = jobPostingService.findByKey(key);
 			return toJobDetail(byKey);
 		} else {
@@ -45,7 +45,7 @@ public class JobService {
 	public void fill(List<JobPreview> jobPreviews) {
 		jobPreviews.stream()
 			.map(JobPreview::getKey)
-			.filter(Predicate.not(jobPostingService::existByKey))
+			.filter(Predicate.not(jobPostingService::existsByKey))
 			.map(jobSearchService::searchDetail)
 			.map(this::toJobPosting)
 			.forEach(jobPostingService::save);
