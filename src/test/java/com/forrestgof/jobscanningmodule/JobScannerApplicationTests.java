@@ -1,13 +1,13 @@
 package com.forrestgof.jobscanningmodule;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootApplication
-public class JobScannerApplication {
+@SpringBootTest
+class JobScannerApplicationTests {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JobScannerApplication.class, args);
+	@Test
+	void contextLoads() {
 	}
 
 }
