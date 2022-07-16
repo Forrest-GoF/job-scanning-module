@@ -1,12 +1,12 @@
-package com.forrestgof.jobscanningmodule.Service;
+package com.forrestgof.jobscanningmodule.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.forrestgof.jobscanningmodule.Repository.CompanyRepository;
 import com.forrestgof.jobscanningmodule.domain.Company;
+import com.forrestgof.jobscanningmodule.repository.CompanyRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +28,6 @@ public class CompanyService {
 	}
 
 	public Company findOne(Long id) {
-		return companyRepository.findOne(id);
+		return companyRepository.findById(id).orElseThrow();
 	}
 }
