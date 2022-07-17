@@ -38,6 +38,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    //SerpAPI google-search-results-java
     maven { url "https://jitpack.io" }
 }
 
@@ -52,7 +53,7 @@ dependencies {
 //    implementation 'com.google.cloud:google-cloud-talent:2.3.0'
 
     //SerpAPI google-search-results-java
-    implementation 'com.github.serpapi:google-search-results-java:2.0.2'
+    implementation 'com.github.serpapi:google-search-results-java:2.0.3'
     implementation 'com.google.code.gson:gson:2.9.0'
 
     compileOnly 'org.projectlombok:lombok'
