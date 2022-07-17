@@ -1,7 +1,8 @@
 package com.forrestgof.jobscanningmodule.domain;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -31,17 +32,20 @@ public class JobPosting {
 	@Column(name = "job_id")
 	private Long id;
 
-	@Column(name = "external_key", unique = true)
+	//TODO: Unique 특성 추가
+	@Column(name = "external_key")
 	private String key;
 
 	@Column(name = "job_title")
 	private String title;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	//TODO: cascade 조건 제거 고려
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "company_id")
 	private Company company;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	//TODO: cascade 조건 제거 고려
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "location_id")
 	private Location location;
 
@@ -49,7 +53,7 @@ public class JobPosting {
 	private String platform;
 
 	@Column(name = "job_posted_at")
-	private LocalDateTime postedAt;
+	private OffsetDateTime postedAt;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "job_type")
@@ -66,7 +70,7 @@ public class JobPosting {
 
 	@Builder
 	public JobPosting(String key, String title, Company company, Location location, String platform,
-		LocalDateTime postedAt, JobType jobType, String applyingUrl, String description,
+		OffsetDateTime postedAt, JobType jobType, String applyingUrl, String description,
 		Salary salary) {
 		this.key = key;
 		this.title = title;

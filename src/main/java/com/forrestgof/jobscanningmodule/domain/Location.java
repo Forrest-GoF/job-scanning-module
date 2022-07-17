@@ -3,6 +3,7 @@ package com.forrestgof.jobscanningmodule.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +24,12 @@ public class Location {
 	@Column(name = "location_id")
 	private Long id;
 
-	@Column(name = "location_name", unique = true)
+	//TODO: Unique 특성 추가
+	@Column(name = "location_name")
 	private String name;
 
-	@OneToMany(mappedBy = "location")
+	//TODO: cascade 조건 제거 고려
+	@OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
 	private List<JobPosting> jobPostings = new ArrayList<>();
 
 	public static Location from(String name) {
