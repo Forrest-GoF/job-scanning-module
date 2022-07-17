@@ -1,9 +1,9 @@
-package com.forrestgof.jobscanningmodule.serpapi.controller;
+package com.forrestgof.jobscanningmodule.serpapi.service;
 
 import com.forrestgof.jobscanningmodule.serpapi.GoogleSearch;
 import com.google.gson.JsonObject;
 
-public class GoogleJobsApiController extends SerpApiController {
+public class GoogleJobsApiService extends SerpApiService {
 
 	private final String PARAMETER_NAME_LOCATION = "location";
 	private final String PARAMETER_NAME_GOOGLE_DOMAIN = "google_domain";
@@ -15,7 +15,7 @@ public class GoogleJobsApiController extends SerpApiController {
 	private final String COUNTRY_CODE = "kr";
 	private final String SEARCH_ENGINE = "google_jobs";
 
-	private static GoogleJobsApiController instance;
+	private static GoogleJobsApiService instance;
 
 	@Override
 	void setRequiredParameter() {
@@ -30,9 +30,9 @@ public class GoogleJobsApiController extends SerpApiController {
 		parameter.put(PARAMETER_NAME_COUNTRY_CODE, COUNTRY_CODE);
 	}
 
-	public static GoogleJobsApiController getInstance() {
+	public static GoogleJobsApiService getInstance() {
 		if (instance == null) {
-			instance = new GoogleJobsApiController();
+			instance = new GoogleJobsApiService();
 		}
 		return instance;
 	}

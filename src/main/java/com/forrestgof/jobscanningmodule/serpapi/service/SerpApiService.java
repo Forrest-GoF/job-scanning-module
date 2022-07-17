@@ -1,12 +1,15 @@
-package com.forrestgof.jobscanningmodule.serpapi.controller;
+package com.forrestgof.jobscanningmodule.serpapi.service;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.forrestgof.jobscanningmodule.serpapi.config.SerpApiKey;
 import com.google.gson.JsonObject;
 
-public class SerpApiController {
+@Service
+public class SerpApiService {
 
 	final String PARAMETER_NAME_API_KEY = "api_key";
 	final String PARAMETER_NAME_ENGINE = "engine";
@@ -15,7 +18,7 @@ public class SerpApiController {
 	private final SerpApiKey serpApiKey;
 	final Map<String, String> parameter;
 
-	SerpApiController() {
+	SerpApiService() {
 		serpApiKey = SerpApiKey.getInstance();
 		parameter = new HashMap<>();
 		parameter.put(PARAMETER_NAME_API_KEY, serpApiKey.getKey());

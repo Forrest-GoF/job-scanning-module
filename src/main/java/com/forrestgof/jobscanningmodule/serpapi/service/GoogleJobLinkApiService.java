@@ -1,22 +1,22 @@
-package com.forrestgof.jobscanningmodule.serpapi.controller;
+package com.forrestgof.jobscanningmodule.serpapi.service;
 
 import com.forrestgof.jobscanningmodule.serpapi.GoogleSearch;
 import com.google.gson.JsonObject;
 
-public class GoogleJobLinkApiController extends SerpApiController {
+public class GoogleJobLinkApiService extends SerpApiService {
 
 	private final String SEARCH_ENGINE = "google_jobs_listing";
 
-	private static GoogleJobLinkApiController instance;
+	private static GoogleJobLinkApiService instance;
 
 	@Override
 	void setRequiredParameter() {
 		parameter.put(PARAMETER_NAME_ENGINE, SEARCH_ENGINE);
 	}
 
-	public static GoogleJobLinkApiController getInstance() {
+	public static GoogleJobLinkApiService getInstance() {
 		if (instance == null) {
-			instance = new GoogleJobLinkApiController();
+			instance = new GoogleJobLinkApiService();
 		}
 		return instance;
 	}
@@ -27,7 +27,7 @@ public class GoogleJobLinkApiController extends SerpApiController {
 
 		GoogleSearch search = new GoogleSearch(parameter);
 
-		JsonObject jobLinkResult = new JsonObject();
+		JsonObject jobLinkResult = null;
 		try {
 			jobLinkResult = search.getJson();
 		} catch (Exception e) {
