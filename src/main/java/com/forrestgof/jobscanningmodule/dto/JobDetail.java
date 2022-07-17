@@ -1,6 +1,6 @@
 package com.forrestgof.jobscanningmodule.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.forrestgof.jobscanningmodule.domain.Salary;
 
@@ -13,7 +13,7 @@ public class JobDetail {
 	private CompanyDto company;
 	private LocationDto location;
 	private String platform;
-	private LocalDateTime postedAt;
+	private OffsetDateTime postedAt;
 	private Salary salary;
 	private String type;
 	private String applyUrl;

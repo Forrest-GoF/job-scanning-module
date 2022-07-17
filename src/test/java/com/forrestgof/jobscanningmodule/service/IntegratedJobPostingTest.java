@@ -1,6 +1,6 @@
 package com.forrestgof.jobscanningmodule.service;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,6 +20,7 @@ import com.forrestgof.jobscanningmodule.repository.JobPostingRepository;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
+
 public class IntegratedJobPostingTest {
 
 	@Autowired
@@ -48,7 +49,7 @@ public class IntegratedJobPostingTest {
 			.company(company)
 			.location(location)
 			.platform("잡코리아")
-			.postedAt(LocalDateTime.now())
+			.postedAt(OffsetDateTime.now())
 			.jobType(JobType.FULLTIME)
 			.salary(salary)
 			.applyingUrl("www.naver.com")

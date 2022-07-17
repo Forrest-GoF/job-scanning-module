@@ -1,6 +1,6 @@
 package com.forrestgof.jobscanningmodule.service;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class JobPostingServiceTest {
 			.key("12345")
 			.title("네이버 갈사람~")
 			.platform("잡코리아")
-			.postedAt(LocalDateTime.now())
+			.postedAt(OffsetDateTime.now())
 			.jobType(JobType.FULLTIME)
 			.applyingUrl("www.naver.com")
 			.description("테스트 입니다.")
@@ -51,7 +51,7 @@ class JobPostingServiceTest {
 			.key("123456")
 			.title("네이버 갈사람~")
 			.platform("잡코리아")
-			.postedAt(LocalDateTime.now())
+			.postedAt(OffsetDateTime.now())
 			.jobType(JobType.FULLTIME)
 			.applyingUrl("www.naver.com")
 			.description("테스트 입니다.")
@@ -72,7 +72,7 @@ class JobPostingServiceTest {
 			.key("1234567")
 			.title("네이버 갈사람~")
 			.platform("잡코리아")
-			.postedAt(LocalDateTime.now())
+			.postedAt(OffsetDateTime.now())
 			.jobType(JobType.FULLTIME)
 			.applyingUrl("www.naver.com")
 			.description("테스트 입니다.")

@@ -46,7 +46,7 @@ public class JobService {
 		jobPreviews.stream()
 			.map(JobPreview::getKey)
 			.filter(Predicate.not(jobPostingService::existsByKey))
-			.map(jobSearchService::searchDetail)
+			.map(this::detail)
 			.map(this::toJobPosting)
 			.forEach(jobPostingService::save);
 	}
@@ -54,6 +54,7 @@ public class JobService {
 	JobPosting toJobPosting(JobDetail jobDetail) {
 		Company company = Company.of(jobDetail.getCompany().getName(), jobDetail.getCompany().getThumbnail());
 		Location location = Location.from(jobDetail.getLocation().getName());
+
 		return JobPosting.builder()
 			.key(jobDetail.getKey())
 			.title(jobDetail.getTitle())
