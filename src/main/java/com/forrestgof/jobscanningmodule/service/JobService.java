@@ -26,7 +26,7 @@ public class JobService {
 
 	public List<JobPreview> previews(SearchFilter searchFilter) {
 		List<JobPreview> jobPreviews = jobSearchService.searchPreview(searchFilter);
-		fill(jobPreviews);
+		filter(jobPreviews);
 		return jobPreviews;
 	}
 
@@ -42,7 +42,7 @@ public class JobService {
 		}
 	}
 
-	public void fill(List<JobPreview> jobPreviews) {
+	public void filter(List<JobPreview> jobPreviews) {
 		jobPreviews.stream()
 			.map(JobPreview::getKey)
 			.filter(Predicate.not(jobPostingService::existsByKey))

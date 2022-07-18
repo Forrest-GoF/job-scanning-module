@@ -27,38 +27,35 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SerpJobSearchService extends JobSearchService {
 
-	private final MockJobSearchLibraryService mockJobSearchLibraryService;
+	private final JobSearchLibraryService jobSearchLibraryService;
 	Map<String, tempJobPreview> memoryJobRepository = new HashMap<>();
 
 	@Override
 	public List<JobPreview> searchPreview(SearchFilter searchFilter) {
-		JsonObject searchResult = mockJobSearchLibraryService.search(searchFilter);
+		JsonObject searchResult = jobSearchLibraryService.search(searchFilter);
 
 		List<JobPreview> jobPreviews = new ArrayList<>();
 		JsonElement jobs_results = searchResult.get("jobs_results");
 		JsonArray asJsonArray = jobs_results.getAsJsonArray();
 
+		int key = 20;
 		for (JsonElement jobElement : asJsonArray) {
 			JsonObject job = jobElement.getAsJsonObject();
 
-			String title = job.get("title").toString();
-			String company_name = job.get("company_name").toString();
-			String location = job.get("location").toString();
-			String via = job.get("via").toString();
-			String description = job.get("description").toString();
-			String thumbnail = "";
+			String title = getValue(job, "title");
+			String company_name = getValue(job, "company_name");
+			String location = getValue(job, "location");
+			String via = getValue(job, "via");
+			String description = getValue(job, "description");
+			String thumbnail = getValue(job, "thumbnail");
 			JsonArray extensions = job.get("extensions").getAsJsonArray();
 			OffsetDateTime posted_at = null;
 			String schedule_type = "FULLTIME";
-			String job_id = job.get("job_id").toString().substring(0, 100);
+			String job_id = String.valueOf(key++);
 
 			//TODO: posted_at 변환
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
 
-			try {
-				thumbnail = job.get("thumbnail").toString();
-			} catch (Exception e) {
-			}
 			try {
 				posted_at = OffsetDateTime.parse(extensions.get(0).toString(), formatter);
 			} catch (Exception e) {
@@ -84,6 +81,17 @@ public class SerpJobSearchService extends JobSearchService {
 		}
 
 		return jobPreviews;
+	}
+
+	String getValue(JsonObject json, String key) {
+		if (json.has(key)) {
+			String s = json.get(key).toString();
+			if (s.length() > 250) {
+				return s.substring(0, 250);
+			}
+			return s;
+		}
+		return "";
 	}
 
 	@Data

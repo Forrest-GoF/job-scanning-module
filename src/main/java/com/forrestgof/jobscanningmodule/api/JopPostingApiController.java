@@ -27,6 +27,7 @@ public class JopPostingApiController {
 	@GetMapping("/search")
 	public Result searchPostingPreview(@RequestBody @Valid SearchFilter searchFilter) {
 		List<JobPreview> data = jobService.previews(searchFilter);
+		System.out.println(searchFilter.getGl());
 
 		return new Result(data);
 	}

@@ -1,4 +1,4 @@
-package com.forrestgof.jobscanningmodule.serpapi;
+package com.forrestgof.jobscanningmodule.service.serpapi.library;
 
 import java.io.BufferedReader;
 import java.io.IOException;

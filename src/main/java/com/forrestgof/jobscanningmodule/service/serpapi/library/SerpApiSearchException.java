@@ -1,4 +1,4 @@
-package com.forrestgof.jobscanningmodule.serpapi;
+package com.forrestgof.jobscanningmodule.service.serpapi.library;
 
 /**
  * SerpApi Search Exception wraps any exception related to the connection with SerpApi.com

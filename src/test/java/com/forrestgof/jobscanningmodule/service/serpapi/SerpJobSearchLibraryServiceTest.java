@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.forrestgof.jobscanningmodule.dto.SearchFilter;
-import com.forrestgof.jobscanningmodule.serpapi.SerpApiSearchException;
+import com.forrestgof.jobscanningmodule.service.serpapi.library.SerpApiSearchException;
 import com.google.gson.JsonObject;
 
 @ExtendWith(SpringExtension.class)

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.forrestgof.jobscanningmodule.dto.JobPreview;
 import com.forrestgof.jobscanningmodule.dto.SearchFilter;
+import com.forrestgof.jobscanningmodule.service.JobSearchService;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -18,15 +19,16 @@ import com.forrestgof.jobscanningmodule.dto.SearchFilter;
 class SerpJobSearchServiceTest {
 
 	@Autowired
-	SerpJobSearchService serpJobSearchService;
+	JobSearchService jobSearchService;
 
 	@Test
 	public void preview_조회() throws Exception {
 		//given
 		SearchFilter searchFilter = new SearchFilter();
+		searchFilter.setQ("개발자");
 
 		//when
-		List<JobPreview> jobPreviews = serpJobSearchService.searchPreview(searchFilter);
+		List<JobPreview> jobPreviews = jobSearchService.searchPreview(searchFilter);
 
 		//then
 		System.out.println(jobPreviews.get(0).toString());
